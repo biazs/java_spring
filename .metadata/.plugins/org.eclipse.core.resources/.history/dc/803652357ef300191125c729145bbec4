@@ -1,0 +1,5 @@
+package br.pucminas.model.service;
+
+public class CategoriaServiceImpl {
+
+}
