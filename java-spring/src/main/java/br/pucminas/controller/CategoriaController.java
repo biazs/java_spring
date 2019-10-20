@@ -24,7 +24,7 @@ public class CategoriaController {
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
-		model.addAttribute("categoria", service.buscarTodos());
+		model.addAttribute("categorias",service.buscarTodos());
 		return "categoria/lista";
 	}
 	
@@ -36,13 +36,14 @@ public class CategoriaController {
 	@PostMapping("/salvar")
 	public String salvar(@Valid Categoria categoria, BindingResult result,
 			RedirectAttributes attr) {
+		
 		if(result.hasErrors()) {
 			return "categoria/cadastro";
 		}
+		
 		service.salvar(categoria);
-		attr.addFlashAttribute("success", "Categoria inserida com sucesso!");
-	
-		return "redirect /categorias/listar";
+		attr.addFlashAttribute("success","Categoria inserida com sucessso!");
+		return "redirect:/categorias/listar";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -54,20 +55,21 @@ public class CategoriaController {
 	@PostMapping("/editar")
 	public String editar(@Valid Categoria categoria, BindingResult result,
 			RedirectAttributes attr) {
+		
 		if(result.hasErrors()) {
 			return "categoria/cadastro";
 		}
+		
 		service.editar(categoria);
-		attr.addFlashAttribute("success", "Categoria alterada com sucesso!");
-	
-		return "redirect categorias/listar";
+		attr.addFlashAttribute("success","Categoria alterada com sucessso!");
+		return "redirect:/categorias/listar";
 	}
 	
 	@GetMapping("/excluir/{id}")
-	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {
+	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {	
 		service.excluir(id);
-		attr.addFlashAttribute("success", "Categoria excluida com sucesso!");
-		return "redirect /categorias/cadastro";
+		attr.addFlashAttribute("success","Categoria excluida com sucessso!");
+		return "redirect:/categorias/listar";
 	}
-	
+
 }

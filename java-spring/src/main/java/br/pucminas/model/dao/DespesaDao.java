@@ -12,5 +12,7 @@ public interface DespesaDao {
 	Despesa findById(Long id);
 	
 	List<Despesa> findAll();
+	
+	List<Despesa> findByCategoriaId(Long id);
 
 }

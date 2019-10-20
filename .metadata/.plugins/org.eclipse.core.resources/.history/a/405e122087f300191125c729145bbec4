@@ -1,0 +1,10 @@
+package br.pucminas.model.service;
+
+import org.springframework.core.convert.converter.Converter;
+import org.springframework.stereotype.Component;
+import br.pucminas.model.entity.Categoria;
+
+@Component
+public class StringToCategoriaConversor implements Converter<String, Categoria> {
+
+}

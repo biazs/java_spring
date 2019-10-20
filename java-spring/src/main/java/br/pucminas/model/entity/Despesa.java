@@ -1,4 +1,3 @@
-
 package br.pucminas.model.entity;
 
 import java.math.BigDecimal;
@@ -18,37 +17,38 @@ import org.springframework.format.annotation.DateTimeFormat.ISO;
 import org.springframework.format.annotation.NumberFormat;
 import org.springframework.format.annotation.NumberFormat.Style;
 
+
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "DESPESAS")
 public class Despesa extends AbstractEntity<Long>{
 	
-	@NotNull
+	@NotBlank
 	@Size(min=3, max=60)
 	@Column(name="descricao", nullable=false, unique=true, length=60)
 	private String descricao;
 	
-	@NotBlank
-	@DateTimeFormat(iso = ISO.DATE, pattern = "")
+	@NotNull
+	@DateTimeFormat(iso=ISO.DATE, pattern = "")
 	@Column(name="data", nullable=false, columnDefinition = "DATE")
 	private LocalDate data;
 	
 	@NotNull
-	@NumberFormat(style = Style.CURRENCY, pattern = "#,##0.00")
+	@NumberFormat(style = Style.CURRENCY, pattern= "#,##0.00")
 	@Column(name="valor", nullable=false, columnDefinition = "DECIMAL(7,2) DEFAULT 0.00")
 	private BigDecimal valor;
-
+	
 	@NotNull
 	@ManyToOne
 	@JoinColumn(name = "categoria_id")
 	private Categoria categoria;
 
-	public Categoria getCategoria() {
-		return categoria;
+	public String getDescricao() {
+		return descricao;
 	}
 
-	public void setCategoria(Categoria categoria) {
-		this.categoria = categoria;
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
 	}
 
 	public LocalDate getData() {
@@ -67,13 +67,11 @@ public class Despesa extends AbstractEntity<Long>{
 		this.valor = valor;
 	}
 
-	public String getDescricao() {
-		return descricao;
+	public Categoria getCategoria() {
+		return categoria;
 	}
 
-	public void setDescricao(String descricao) {
-		this.descricao = descricao;
+	public void setCategoria(Categoria categoria) {
+		this.categoria = categoria;
 	}
-	
-
 }

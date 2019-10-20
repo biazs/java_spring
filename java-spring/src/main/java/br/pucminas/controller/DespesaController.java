@@ -15,10 +15,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
+import br.pucminas.model.entity.Categoria;
 import br.pucminas.model.entity.Despesa;
 import br.pucminas.model.service.CategoriaService;
-import br.pucminas.model.entity.Categoria;
 import br.pucminas.model.service.DespesaService;
 
 @Controller
@@ -32,7 +31,13 @@ public class DespesaController {
 	
 	@GetMapping("/listar")
 	public String listar(ModelMap model) {
-		model.addAttribute("despesas", service.buscarTodos());
+		model.addAttribute("despesas",service.buscarTodos());
+		return "despesa/lista";
+	}
+	
+	@GetMapping("/categoria/{id}")
+	public String categoria(@PathVariable("id") Long id, ModelMap model) {
+		model.addAttribute("despesas",service.buscarPorCategoria(id));
 		return "despesa/lista";
 	}
 	
@@ -44,13 +49,14 @@ public class DespesaController {
 	@PostMapping("/salvar")
 	public String salvar(@Valid Despesa despesa, BindingResult result,
 			RedirectAttributes attr) {
+		
 		if(result.hasErrors()) {
 			return "despesa/cadastro";
 		}
+		
 		service.salvar(despesa);
-		attr.addFlashAttribute("success", "Despesa inserida com sucesso!");
-	
-		return "redirect /despesas/listar";
+		attr.addFlashAttribute("success","Despesa inserida com sucessso!");
+		return "redirect:/despesas/listar";
 	}
 	
 	@GetMapping("/editar/{id}")
@@ -62,25 +68,26 @@ public class DespesaController {
 	@PostMapping("/editar")
 	public String editar(@Valid Despesa despesa, BindingResult result,
 			RedirectAttributes attr) {
+		
 		if(result.hasErrors()) {
 			return "despesa/cadastro";
 		}
+		
 		service.editar(despesa);
-		attr.addFlashAttribute("success", "Despesa alterada com sucesso!");
-	
-		return "redirect /despesas/listar";
+		attr.addFlashAttribute("success","Despesa alterada com sucessso!");
+		return "redirect:/despesas/listar";
 	}
 	
 	@GetMapping("/excluir/{id}")
-	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {
+	public String excluir(@PathVariable("id") Long id, RedirectAttributes attr) {	
 		service.excluir(id);
-		attr.addFlashAttribute("success", "Despesa excluida com sucesso!");
-		return "redirect /despesas/cadastro";
+		attr.addFlashAttribute("success","Despesa excluida com sucessso!");
+		return "redirect:/despesas/listar";
 	}
 	
 	@ModelAttribute("categorias")
 	public List<Categoria> getCategorias(){
 		return categoriaService.buscarTodos();
 	}
-	
+
 }

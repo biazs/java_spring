@@ -1,13 +1,13 @@
 package br.pucminas.model.entity;
 
+import java.util.List;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
-
-import antlr.collections.List;
 
 @SuppressWarnings("serial")
 @Entity
@@ -18,17 +18,9 @@ public class Categoria extends AbstractEntity<Long>{
 	@Size(min=3, max=60)
 	@Column(name="descricao", nullable=false, unique=true, length=60)
 	private String descricao;
-
-	@OneToMany(mappedBy = "categoria")
-	private List despesas; 
 	
-	public List getDespesas() {
-		return despesas;
-	}
-
-	public void setDespesas(List despesas) {
-		this.despesas = despesas;
-	}
+	@OneToMany(mappedBy = "categoria")
+	private List<Despesa> despesas;
 
 	public String getDescricao() {
 		return descricao;
@@ -37,6 +29,12 @@ public class Categoria extends AbstractEntity<Long>{
 	public void setDescricao(String descricao) {
 		this.descricao = descricao;
 	}
-	
 
+	public List<Despesa> getDespesas() {
+		return despesas;
+	}
+
+	public void setDespesas(List<Despesa> despesas) {
+		this.despesas = despesas;
+	}
 }
