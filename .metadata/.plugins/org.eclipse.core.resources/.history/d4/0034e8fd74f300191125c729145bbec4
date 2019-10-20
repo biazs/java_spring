@@ -1,0 +1,11 @@
+package br.pucminas.model.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "CATEGORIAS")
+public class Categoria extends AbstractEntity<Long>{
+	private String descricao;
+
+}

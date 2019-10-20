@@ -1,0 +1,28 @@
+package br.pucminas.model.entity;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name = "CATEGORIAS")
+public class Categoria extends AbstractEntity<Long>{
+	
+	@NotBlank
+	@Size(min=3, max=60)
+	@Column(name="descricao", nullable=false, unique=true, length=60)
+	private String descricao;
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
+
+}

@@ -1,0 +1,45 @@
+
+package br.pucminas.model.entity;
+
+import java.time.LocalDate;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Table;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
+
+import org.springframework.format.annotation.DateTimeFormat;
+import org.springframework.format.annotation.DateTimeFormat.ISO;
+
+@SuppressWarnings("serial")
+@Entity
+@Table(name = "DESPESAS")
+public class Despesa extends AbstractEntity<Long>{
+	
+	@NotNull
+	@Size(min=3, max=60)
+	@Column(name="descricao", nullable=false, columnDefinition = "DATE")
+	private String descricao;
+	
+	@NotBlank
+	@DateTimeFormat(iso = ISO.DATE, pattern = "")
+	@Column(name="data", nullable=false, unique=true, length=60)
+	private LocalDate data;
+	
+	@NotBlank
+	@Size(min=3, max=60)
+	@Column(name="descricao", nullable=false, unique=true, length=60)
+	private String descrcao;
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+	
+
+}

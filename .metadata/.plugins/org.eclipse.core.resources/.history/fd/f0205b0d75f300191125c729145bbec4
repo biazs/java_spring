@@ -1,0 +1,15 @@
+package br.pucminas.model.entity;
+
+import javax.persistence.Entity;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "CATEGORIAS")
+public class Categoria extends AbstractEntity<Long>{
+	
+	@NotBlank
+	@Size(min=3, max=60)
+	@Column(name="descricao", nullable=false, unique=true, lenght=60)
+	private String descricao;
+
+}
