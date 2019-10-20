@@ -3,6 +3,7 @@ package br.pucminas.model.dao;
 import java.util.List;
 import br.pucminas.model.entity.Categoria;
 
+@SuppressWarnings("rawtypes")
 public interface CategoriaDao {
 	
 	void save(Categoria categoria);
@@ -11,6 +12,6 @@ public interface CategoriaDao {
 	
 	Categoria findById(Long id);
 	
-	List<Categoria> findAll();
+	List findAll();
 
 }

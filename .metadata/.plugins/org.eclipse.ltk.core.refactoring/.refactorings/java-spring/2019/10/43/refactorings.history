@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;br.pucminas.model.dao.DespesaDAO&apos; to &apos;DespesaDao&apos;&#x0A;- Original project: &apos;java-spring&apos;&#x0A;- Original element: &apos;br.pucminas.model.dao.DespesaDAO&apos;&#x0A;- Renamed element: &apos;br.pucminas.model.dao.DespesaDao&apos;&#x0A;- Update references to refactored element&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;DespesaDAO&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src\/main\/java&lt;br.pucminas.model.dao{DespesaDAO.java[DespesaDAO" matchStrategy="1" name="DespesaDao" qualified="false" references="true" similarDeclarations="false" stamp="1571603872018" textual="false" version="1.0"/>
+</session>
