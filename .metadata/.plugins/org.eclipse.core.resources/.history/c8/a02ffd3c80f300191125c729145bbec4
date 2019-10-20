@@ -1,0 +1,29 @@
+package br.pucminas.controller;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import br.pucminas.model.entity.Categoria;
+import br.pucminas.model.service.CategoriaService;
+
+@Controller
+@RequestMapping("/categorias")
+public class CategoriaController {
+	
+	@Autowired
+	private CategoriaService service;
+	
+	@GetMapping("/listar")
+	public String listar(ModelMap model) {
+		model.addAttribute("categoria", service.buscarTodos());
+		return "categoria/lista";
+	}
+	
+	@GetMapping("/cadastrar")
+	public String cadastrar(Categoria categoria) {
+		return "categoria/cadastro";
+	}
+}
