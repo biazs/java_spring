@@ -29,7 +29,7 @@
 		                    <tr th:each="c : ${categorias}">
 		                        <td th:text="${c.id}">1</td>
 		                        <td>
- 									<a th:text="${c.descricao}" th:href="@{/despesas/categoria/{id} (id=${c.id}) }" >
+ 									<a th:text="${c.descricao}" th:href="@{/categorias/editar/{id} (id=${c.id}) }" >
 		                                Descrição
 		                            </a>
 								</td>		                        

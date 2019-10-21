@@ -1248,3 +1248,15 @@ java.lang.InterruptedException
 
 !ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-20 19:04:25.822
 !MESSAGE executing callback sts4.classpath.OgfHFzHs SUCCESS [done]
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-21 20:26:40.694
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.OgfHFzHs
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-21 20:26:40.699
+!MESSAGE unsubscribing from classpath changes: sts4.classpath.OgfHFzHs
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-21 20:26:40.700
+!MESSAGE subsribers = {}
+
+!ENTRY org.springframework.tooling.ls.eclipse.commons 1 0 2019-10-21 20:26:40.700
+!MESSAGE ClasspathListenerHandler removeClasspathListener sts4.classpath.OgfHFzHs => OK
